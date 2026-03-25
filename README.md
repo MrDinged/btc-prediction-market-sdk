@@ -1,0 +1,81 @@
+# BTC Prediction Market SDK
+
+TypeScript SDK for interacting with the Bitcoin-anchored prediction market on Stacks.
+
+This package is aligned with the current `btc-prediction-market-v3` contract surface.
+
+## Install
+
+```bash
+npm install @phessophissy/btc-prediction-market-sdk
+```
+
+## Quick Start
+
+```ts
+import { initializeMarketSDK } from "@phessophissy/btc-prediction-market-sdk";
+
+const sdk = initializeMarketSDK(
+  "SP2KYZRNME33Y39GP3RKC90DQJ45EF1N0NZNVRE09",
+  true,
+  "btc-prediction-market-v3"
+);
+
+const marketCount = await sdk.getMarketCount();
+const marketZero = await sdk.getMarket(0);
+```
+
+## Supported V3 Methods
+
+### Market
+
+- `createBinaryMarket(title, description, settlementBurnHeight, senderKey)`
+- `getMarket(marketId)`
+- `getMarketCount()`
+- `getUserPosition(marketId, userAddress)`
+- `getCurrentBurnHeight()`
+
+### Owner / Admin
+
+- `getOwner()`
+- `getPendingOwner()`
+- `getContractBalance()`
+- `getTotalFeesCollected()`
+- `isPaused()`
+- `isEmergency()`
+- `transferOwnership(newOwner, senderKey)`
+- `acceptOwnership(senderKey)`
+- `cancelOwnershipTransfer(senderKey)`
+- `enableEmergencyMode(senderKey)`
+- `withdrawFees(amountMicroStx, recipient, senderKey)`
+- `emergencyWithdrawAll(senderKey)`
+- `emergencyWithdraw(amountMicroStx, recipient, senderKey)`
+- `setPlatformPaused(paused, senderKey)`
+
+## Exports
+
+- `MarketContractService`
+- `initializeMarketSDK`
+- V3 types from `src/types.ts`
+- Input validators from `src/utils/validation-50.ts`
+
+## Development
+
+```bash
+npm install
+npm run build
+npm test
+```
+
+## Publishing
+
+The package publishes built artifacts from `dist/`.
+
+```bash
+npm run build
+npm publish --access public
+```
+
+## License
+
+MIT
