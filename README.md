@@ -16,7 +16,7 @@ npm install @phessophissy/btc-prediction-market-sdk
 import { initializeMarketSDK } from "@phessophissy/btc-prediction-market-sdk";
 
 const sdk = initializeMarketSDK(
-  "SP2KYZRNME33Y39GP3RKC90DQJ45EF1N0NZNVRE09",
+  "YOUR_CONTRACT_ADDRESS",
   true,
   "btc-prediction-market-v3"
 );
