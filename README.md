@@ -83,8 +83,9 @@ npm run start
 Automation:
 
 - GitHub Action: `.github/workflows/growth-pulse.yml`
-- Schedule: every 30 minutes
+- Triggered by external cron via `repository_dispatch` (`growth_pulse_tick`)
 - Also supports manual run through `workflow_dispatch`
+- Setup guide: `docs/external-cron-setup.md`
 
 ## Publishing
 

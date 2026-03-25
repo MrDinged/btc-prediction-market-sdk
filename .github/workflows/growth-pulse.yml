@@ -1,16 +1,25 @@
 name: Growth Pulse
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"
+  repository_dispatch:
+    types: [growth_pulse_tick]
   workflow_dispatch:
 
 jobs:
   growth-pulse:
     runs-on: ubuntu-latest
+    concurrency:
+      group: growth-pulse
+      cancel-in-progress: false
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
+      - name: Print trigger context
+        run: |
+          echo "event_name=${{ github.event_name }}"
+          echo "event_action=${{ github.event.action }}"
+          echo "run_id=${{ github.run_id }}"
+
       - name: Checkout repository
         uses: actions/checkout@v6
 
