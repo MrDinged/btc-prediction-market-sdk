@@ -1,0 +1,13 @@
+{
+  "name": "btc-prediction-growth-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Install and smoke-check @phessophissy/btc-prediction-market-sdk",
+  "main": "index.js",
+  "dependencies": {
+    "@phessophissy/btc-prediction-market-sdk": "1.1.2"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}

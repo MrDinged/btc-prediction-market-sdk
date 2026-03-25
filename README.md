@@ -67,6 +67,25 @@ npm run build
 npm test
 ```
 
+## Growth Bot
+
+The repository includes a small download/smoke-check bot in `growth-bot/` for
+`@phessophissy/btc-prediction-market-sdk@1.1.2`.
+
+Run locally:
+
+```bash
+cd growth-bot
+npm install
+npm run start
+```
+
+Automation:
+
+- GitHub Action: `.github/workflows/growth-pulse.yml`
+- Schedule: every 30 minutes
+- Also supports manual run through `workflow_dispatch`
+
 ## Publishing
 
 The package publishes built artifacts from `dist/`.

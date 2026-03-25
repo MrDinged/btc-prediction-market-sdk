@@ -1,0 +1,26 @@
+name: Growth Pulse
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+jobs:
+  growth-pulse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install SDK from npm
+        working-directory: ./growth-bot
+        run: npm install --prefer-online --no-package-lock
+
+      - name: Run growth bot smoke check
+        working-directory: ./growth-bot
+        run: npm run start
