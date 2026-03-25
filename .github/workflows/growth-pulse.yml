@@ -2,7 +2,7 @@ name: Growth Pulse
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -17,9 +17,13 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install SDK from npm
+      - name: Install SDK from npm (10x)
         working-directory: ./growth-bot
-        run: npm install --prefer-online --no-package-lock
+        run: |
+          for i in {1..10}; do
+            echo "Install pulse $i/10"
+            npm install @phessophissy/btc-prediction-market-sdk@1.1.2 --prefer-online --no-package-lock
+          done
 
       - name: Run growth bot smoke check
         working-directory: ./growth-bot
